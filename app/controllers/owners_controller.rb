@@ -2,12 +2,12 @@ class OwnersController < ApplicationController
   before_action :set_owner, only: %i[show update destroy]
 
   def show
-    render json: owner
+    render json: @owner
   end
 
   def update
-    if owner.update(owner_params)
-      render json: owner
+    if @owner.update(owner_params)
+      render json: @owner
     else
       render json: {
                errors: owner.errors.full_messages,
@@ -17,9 +17,9 @@ class OwnersController < ApplicationController
   end
 
   def create
-    owner = Owner.new(owner_params)
-    if owner.save
-      render json: owner, status: :created
+    @owner = Owner.new(owner_params)
+    if @owner.save
+      render json: @owner, status: :created
     else
       render json: {
                errors: owner.errors.full_messages,
@@ -29,16 +29,16 @@ class OwnersController < ApplicationController
   end
 
   def destroy
-    owner.destroy
+    @owner.destroy
     render json: { message: 'Owner deleted' }, status: :no_content
   end
 
   private
 
   def set_owner
-    owner = Owner.fint_by(id: params[:id])
+    @owner = Owner.find_by(id: params[:id])
 
-    render json: { error: 'Owner not found' }, status: :not_found unless owner
+    render json: { error: 'Owner not found' }, status: :not_found unless @owner
   end
 
   def owner_params
