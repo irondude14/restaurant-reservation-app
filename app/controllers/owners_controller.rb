@@ -2,7 +2,7 @@ class OwnersController < ApplicationController
   before_action :set_owner, only: %i[show update destroy]
 
   def show
-    render json: @owner
+    render json: @owner, include: :restaurants
   end
 
   def update
@@ -36,7 +36,7 @@ class OwnersController < ApplicationController
   private
 
   def set_owner
-    @owner = Owner.find_by(id: params[:id])
+    @owner = Owner.includes(:restaurants).find_by(id: params[:id])
 
     render json: { error: 'Owner not found' }, status: :not_found unless @owner
   end
