@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def show
-    render json: @user, include: :reservations
+    render json: @user, include: { reservations: :restaurant }
   end
 
   private
