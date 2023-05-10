@@ -5,6 +5,34 @@ class UsersController < ApplicationController
     render json: @user, include: { reservations: :restaurant }
   end
 
+  def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: {
+               errors: user.errors.full_messages,
+             },
+             status: :unprocessable_entity
+    end
+  end
+
+  def create
+    @user = User.create(user_params)
+    if @user.persisted?
+      render json: @user, status: :created
+    else
+      render json: {
+               errors: user.errors.full_messages,
+             },
+             status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @user.destroy
+    render json: { message: 'User deleted' }, status: :no_content
+  end
+
   private
 
   def set_user

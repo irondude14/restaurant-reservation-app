@@ -17,8 +17,8 @@ class OwnersController < ApplicationController
   end
 
   def create
-    @owner = Owner.new(owner_params)
-    if @owner.save
+    @owner = Owner.create(owner_params)
+    if @owner.persisted?
       render json: @owner, status: :created
     else
       render json: {
