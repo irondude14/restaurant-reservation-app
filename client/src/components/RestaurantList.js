@@ -16,12 +16,16 @@ const RestaurantList = () => {
         <p>{r.address}</p>
         <p>{r.phone}</p>
         <img src={r.image_url} alt={r.name} />
+        <p>
+          <button>Make a Reservation</button>
+        </p>
       </li>
     );
   });
 
   return (
     <div>
+      <h1>Restaurants:</h1>
       <ul>{restaurantList}</ul>
     </div>
   );
