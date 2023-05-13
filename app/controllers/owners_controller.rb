@@ -5,6 +5,8 @@ class OwnersController < ApplicationController
     render json: @owner, include: :restaurants
   end
 
+  # @owner.authenticate(params[:owner][:current_password]) &&
+
   def update
     if @owner.update(owner_params)
       render json: @owner
@@ -18,6 +20,7 @@ class OwnersController < ApplicationController
 
   def create
     @owner = Owner.create(owner_params)
+    @owner.password_hash = BCrypt::Password.create(params[:owner][:password])
     if @owner.persisted?
       render json: @owner, status: :created
     else
@@ -46,7 +49,7 @@ class OwnersController < ApplicationController
       :name,
       :email,
       :password,
-      :password_confirmation,
+      # :password_confirmation,
     )
   end
 end
