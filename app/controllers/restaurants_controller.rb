@@ -54,6 +54,7 @@ class RestaurantsController < ApplicationController
       :phone,
       :price,
       :image_url,
+      :description,
     )
   end
 end

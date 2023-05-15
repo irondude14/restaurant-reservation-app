@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -13,11 +13,13 @@ const RestaurantList = () => {
   const restaurantList = restaurants.map((r) => {
     return (
       <li key={r.id}>
-        <Link to={`/restaurant/${r.id}`}>
-          {r.name}
-
-          <Outlet />
-        </Link>
+        <h3>
+          <Link to={`/restaurant/${r.id}`}>{r.name}</Link>
+        </h3>
+        <p>{r.description}</p>
+        <p>
+          <img src={r.image_url} alt='vesuvio' />
+        </p>
       </li>
     );
   });

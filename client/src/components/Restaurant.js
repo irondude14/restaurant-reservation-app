@@ -18,6 +18,7 @@ const Restaurant = () => {
   return (
     <div>
       <h2>{restaurant.name}</h2>
+      <p>{restaurant.description}</p>
       <p>{restaurant.address}</p>
       <p>{restaurant.phone}</p>
       <img src={restaurant.image_url} alt={restaurant.name} />
