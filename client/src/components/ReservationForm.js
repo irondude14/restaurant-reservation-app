@@ -23,7 +23,7 @@ const ReservationForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <h3>ReservationForm</h3>
-      <label htmlFor='title'>Name:</label>
+      <label htmlFor='name'>Name:</label>
       <input
         type='text'
         value={reservation.name}
