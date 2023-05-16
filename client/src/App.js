@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import LogIn from './components/LogIn';
 import ReservationForm from './components/ReservationForm';
 import Restaurant from './components/Restaurant';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Navigate to='/home' />} />
           <Route path='home' element={<Home />} />
           <Route path='login' element={<LogIn />} />
+          <Route path='signup' element={<SignUp />} />
           <Route path='reservation' element={<ReservationForm />} />
           <Route path='restaurant/:id' element={<Restaurant />} />
         </Route>

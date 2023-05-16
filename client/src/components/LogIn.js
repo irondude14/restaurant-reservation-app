@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LogIn = () => {
   const [ownerFlag, setOwnerFlag] = useState(false);
@@ -46,6 +47,10 @@ const LogIn = () => {
           <button onClick={handleFlag}>Are you a Client?</button>
         </p>
       )}
+      <br />
+      <button>
+        <Link to='/signup'>Don't have an account?</Link>
+      </button>
     </form>
   );
 };
