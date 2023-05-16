@@ -5,8 +5,6 @@ class UsersController < ApplicationController
     render json: @user, include: { reservations: :restaurant }
   end
 
-  # @user.authenticate(params[:user][:current_password]) &&
-
   def update
     if @user.update(user_params)
       render json: @user
@@ -20,7 +18,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.password_hash = BCrypt::Password.create(params[:user][:password])
 
     if @user.save
       render json: @user, status: :created
@@ -51,7 +48,7 @@ class UsersController < ApplicationController
       :email,
       :phone,
       :password,
-      # :password_confirmation,
+      :password_confirmation,
     )
   end
 end
