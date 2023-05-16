@@ -8,20 +8,13 @@
 
 puts 'Seeding database...'
 
-require 'bcrypt'
+# Owner.create(name: 'Arthur Bucco', email: 'abucco@gmail.com', password: '123')
 
-# owner_pass_1 = BCrypt::Password.create('123')
-# Owner.create(
-#   name: 'Arthur Bucco',
-#   email: 'burnedrabbit@hotmail.com',
-#   password_hash: owner_pass_1,
-# )
-
-# user_pass_1 = BCrypt::Password.create('123')
 # User.create(
 #   name: 'Kevin Smith',
-#   email: 'silguybehindquickstop@gmail.com',
-#   password_hash: user_pass_1,
+#   email: 'ksmith@gmail.com',
+#   phone: '+17184136666',
+#   password: '123',
 # )
 
 # Restaurant.create(
@@ -32,6 +25,7 @@ require 'bcrypt'
 #   image_url:
 #     'https://pbs.twimg.com/media/FAjXILrWQAQV_zU?format=jpg&name=medium',
 #   owner_id: 1,
+#   description: 'Classic Italian Restaurant',
 # )
 
 # Reservation.create(

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2023_05_15_211128) do
   create_table "owners", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_hash"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2023_05_15_211128) do
     t.string "name"
     t.string "email"
     t.string "phone"
-    t.string "password_hash"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
