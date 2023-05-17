@@ -10,7 +10,7 @@ class OwnersController < ApplicationController
       render json: @owner
     else
       render json: {
-               errors: owner.errors.full_messages,
+               errors: @owner.errors.full_messages,
              },
              status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class OwnersController < ApplicationController
       render json: @owner, status: :created
     else
       render json: {
-               errors: owner.errors.full_messages,
+               errors: @owner.errors.full_messages,
              },
              status: :unprocessable_entity
     end
