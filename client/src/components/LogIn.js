@@ -9,8 +9,6 @@ const LogIn = () => {
     user_type: 'owner',
   });
 
-  console.log(logInInfo);
-
   function handleLogInInfo(e) {
     setLogInInfo({
       ...logInInfo,
