@@ -14,8 +14,6 @@ const SignUp = () => {
     password: '',
   });
 
-  console.log(ownerInfo);
-
   function handleFlag(e) {
     e.preventDefault();
     setOwnerFlag(!ownerFlag);
@@ -74,9 +72,6 @@ const SignUp = () => {
         } else {
           throw new Error('Owner creation failed');
         }
-      })
-      .then((data) => {
-        console.log(data);
       })
       .catch((error) => {
         console.error(error);
