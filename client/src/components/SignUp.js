@@ -14,7 +14,7 @@ const SignUp = () => {
     password: '',
   });
 
-  console.log(userInfo);
+  console.log(ownerInfo);
 
   function handleFlag(e) {
     e.preventDefault();
@@ -52,9 +52,6 @@ const SignUp = () => {
           throw new Error('User creation failed');
         }
       })
-      .then((data) => {
-        console.log(data);
-      })
       .catch((error) => {
         console.error(error);
       });
@@ -62,6 +59,28 @@ const SignUp = () => {
 
   function createOwner(e) {
     e.preventDefault();
+
+    const owner = { owner: ownerInfo };
+    fetch('/owners', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(owner),
+    })
+      .then((r) => {
+        if (r.ok) {
+          return r.json();
+        } else {
+          throw new Error('Owner creation failed');
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   return (
