@@ -21,6 +21,7 @@ const Restaurant = () => {
       <p>{restaurant.description}</p>
       <p>{restaurant.address}</p>
       <p>{restaurant.phone}</p>
+      <p>Price: {'$'.repeat(restaurant.price)}</p>
       <img src={restaurant.image_url} alt={restaurant.name} />
       <p>
         <Link to='/reservation'>Make a Reservation</Link>
