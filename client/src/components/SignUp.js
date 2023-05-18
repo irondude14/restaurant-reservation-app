@@ -5,12 +5,11 @@ const SignUp = () => {
   const [ownerInfo, setOwnerInfo] = useState({
     name: '',
     email: '',
-    phone: '',
+    password: '',
   });
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
-    phone: '',
     password: '',
   });
 
@@ -111,16 +110,6 @@ const SignUp = () => {
           <br />
           <label htmlFor='email'>Email:</label>
           <input type='text' name='email' required onChange={handleUserInfo} />
-          <br />
-          <label htmlFor='phone-number'>
-            Phone:
-            <input
-              type='text'
-              name='phone'
-              required
-              onChange={handleUserInfo}
-            />
-          </label>
           <br />
           <label htmlFor='password_confirmation'>
             Password:
