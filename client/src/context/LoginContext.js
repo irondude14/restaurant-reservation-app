@@ -4,7 +4,7 @@ const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
   const [user, setUser] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:3000/show')
@@ -19,7 +19,9 @@ const LoginProvider = ({ children }) => {
   function signup() {}
 
   return (
-    <LoginContext.Provider value={{ user }}>{children}</LoginContext.Provider>
+    <LoginContext.Provider value={{ user, login, logout, signup, isLoggedIn }}>
+      {children}
+    </LoginContext.Provider>
   );
 };
 

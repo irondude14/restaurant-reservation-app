@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { LoginContext } from '../context/LoginContext';
 
 const SignUp = () => {
+  const [errorsList, setErrorsList] = useState([]);
   const [ownerFlag, setOwnerFlag] = useState(false);
   const [ownerInfo, setOwnerInfo] = useState({
     name: '',
@@ -12,6 +14,8 @@ const SignUp = () => {
     email: '',
     password: '',
   });
+
+  const { signup } = useContext(LoginContext);
 
   function handleFlag(e) {
     e.preventDefault();
@@ -126,6 +130,7 @@ const SignUp = () => {
           <input type='submit' value='Register' id='submitBtn' />
         </form>
       )}
+      <ul>{errorsList}</ul>
     </div>
   );
 };
