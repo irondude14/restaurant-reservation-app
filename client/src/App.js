@@ -8,20 +8,23 @@ import LogIn from './components/LogIn';
 import ReservationForm from './components/ReservationForm';
 import Restaurant from './components/Restaurant';
 import SignUp from './components/SignUp';
+import { LoginProvider } from './context/LoginContext';
 
 function App() {
   return (
     <div className='App'>
-      <Routes>
-        <Route path='/' element={<Navigation />}>
-          <Route path='/' element={<Navigate to='/home' />} />
-          <Route path='home' element={<Home />} />
-          <Route path='login' element={<LogIn />} />
-          <Route path='signup' element={<SignUp />} />
-          <Route path='reservation' element={<ReservationForm />} />
-          <Route path='restaurant/:id' element={<Restaurant />} />
-        </Route>
-      </Routes>
+      <LoginProvider>
+        <Routes>
+          <Route path='/' element={<Navigation />}>
+            <Route path='/' element={<Navigate to='/home' />} />
+            <Route path='home' element={<Home />} />
+            <Route path='login' element={<LogIn />} />
+            <Route path='signup' element={<SignUp />} />
+            <Route path='reservation' element={<ReservationForm />} />
+            <Route path='restaurant/:id' element={<Restaurant />} />
+          </Route>
+        </Routes>
+      </LoginProvider>
     </div>
   );
 }

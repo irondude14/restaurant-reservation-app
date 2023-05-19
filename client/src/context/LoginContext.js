@@ -1,11 +1,26 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  return <LoginContext.Provider value={{}}>{children}</LoginContext.Provider>;
+  const [user, setUser] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/show')
+      .then((res) => res.json())
+      .then((user) => setUser(user));
+  }, []);
+
+  function login() {}
+
+  function logout() {}
+
+  function signup() {}
+
+  return (
+    <LoginContext.Provider value={{ user }}>{children}</LoginContext.Provider>
+  );
 };
 
 export { LoginContext, LoginProvider };
