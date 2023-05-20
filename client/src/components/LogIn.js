@@ -41,6 +41,7 @@ const LogIn = () => {
     })
       .then((r) => r.json())
       .then((user) => {
+        // console.log(user.owner);
         login(user);
         navigate('/home');
       });
