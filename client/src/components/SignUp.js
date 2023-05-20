@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [errorsList, setErrorsList] = useState([]);
@@ -16,6 +17,7 @@ const SignUp = () => {
   });
 
   const { signup } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   function handleFlag(e) {
     e.preventDefault();
@@ -46,15 +48,22 @@ const SignUp = () => {
       },
       body: JSON.stringify(user),
     })
-      .then((r) => {
-        if (r.ok) {
-          return r.json();
+      .then((r) => r.json())
+      .then((user) => {
+        if (!user.errors) {
+          signup(user);
+          navigate('/home');
         } else {
-          throw new Error('User creation failed');
+          setUserInfo({
+            name: '',
+            email: '',
+            password: '',
+          });
+          const currentErrors = user.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
         }
-      })
-      .catch((error) => {
-        console.error(error);
       });
   }
 
@@ -69,15 +78,22 @@ const SignUp = () => {
       },
       body: JSON.stringify(owner),
     })
-      .then((r) => {
-        if (r.ok) {
-          return r.json();
+      .then((r) => r.json())
+      .then((owner) => {
+        if (!owner.errors) {
+          signup(owner);
+          navigate('/home');
         } else {
-          throw new Error('Owner creation failed');
+          setOwnerInfo({
+            name: '',
+            email: '',
+            password: '',
+          });
+          const currentErrors = owner.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
         }
-      })
-      .catch((error) => {
-        console.error(error);
       });
   }
 
@@ -87,16 +103,29 @@ const SignUp = () => {
         <form onSubmit={createOwner}>
           <h3>Create Owner Account: </h3>
           <label htmlFor='name'>Name:</label>
-          <input type='text' name='name' required onChange={handleOwnerInfo} />
+          <input
+            type='text'
+            name='name'
+            value={ownerInfo.name}
+            required
+            onChange={handleOwnerInfo}
+          />
           <br />
           <label htmlFor='email'>Email:</label>
-          <input type='text' name='email' required onChange={handleOwnerInfo} />
+          <input
+            type='text'
+            name='email'
+            value={ownerInfo.email}
+            required
+            onChange={handleOwnerInfo}
+          />
           <br />
           <label htmlFor='password'>
             Password:
             <input
               type='password'
               name='password'
+              value={ownerInfo.password}
               required
               onChange={handleOwnerInfo}
             />
@@ -110,16 +139,29 @@ const SignUp = () => {
         <form onSubmit={createUser}>
           <h3>Create User Account: </h3>
           <label htmlFor='name'>Name:</label>
-          <input type='text' name='name' required onChange={handleUserInfo} />
+          <input
+            type='text'
+            name='name'
+            value={userInfo.name}
+            required
+            onChange={handleUserInfo}
+          />
           <br />
           <label htmlFor='email'>Email:</label>
-          <input type='text' name='email' required onChange={handleUserInfo} />
+          <input
+            type='text'
+            name='email'
+            value={userInfo.email}
+            required
+            onChange={handleUserInfo}
+          />
           <br />
           <label htmlFor='password_confirmation'>
             Password:
             <input
               type='password'
               name='password'
+              value={userInfo.password}
               required
               onChange={handleUserInfo}
             />

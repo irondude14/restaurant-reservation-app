@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :restaurants
-  resources :owners
+  resources :owners, only: %i[show update destroy create]
   resources :reservations
-  resources :users
+  resources :users, only: %i[show update destroy create]
 
-  post '/sessions', to: 'users#create_session'
-  delete '/sessions', to: 'users#destroy_session'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get '*path',

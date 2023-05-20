@@ -1,19 +1,28 @@
 import React, { useContext } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginContext';
 
 const Navigation = () => {
-  const { user, isLoggedIn } = useContext(LoginContext);
+  const { user, logout } = useContext(LoginContext);
 
-  console.log(isLoggedIn);
+  const navigate = useNavigate();
 
-  if (isLoggedIn) {
+  function logoutUser() {
+    fetch('/logout').then(() => {
+      logout();
+      navigate('/home');
+    });
+  }
+
+  if (user) {
     return (
       <div>
         <nav>
-          <Link to='/home'>Home Page </Link>
-          {/* <Link to='/login'>Log In </Link> */}
-          {user.name}
+          <h3>Hello {user.name}</h3>
+          <button>
+            <Link to='/home'>Home Page </Link>
+          </button>
+          <button onClick={logoutUser}>Log Out</button>
         </nav>
         <Outlet />
       </div>
@@ -22,9 +31,12 @@ const Navigation = () => {
     return (
       <div>
         <nav>
-          <h3>Please Login or Signup</h3>
-          <Link to='/home'>Home Page </Link>
-          <Link to='/login'>Log In </Link>
+          <button>
+            <Link to='/home'>Home Page </Link>
+          </button>
+          <button>
+            <Link to='/login'>Log In </Link>
+          </button>
         </nav>
         <Outlet />
       </div>

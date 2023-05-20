@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  # login
+
   def create
     if params[:user_type] == 'owner'
       owner = Owner.find_by(email: params[:email])
@@ -29,13 +31,16 @@ class SessionsController < ApplicationController
     end
   end
 
+  # logout
+
   def destroy
-    if params[:user_type] == 'owner'
-      session[:owner_id] = nil
-      render json: { message: 'Owner logged out successfully' }
-    elsif params[:user_type] == 'user'
-      session[:user_id] = nil
-      render json: { message: 'User logged out successfully' }
+    case params[:user_type]
+    when 'owner', 'user'
+      session[params[:user_type].to_sym] = nil
+      render json: {
+               message:
+                 "#{params[:user_type].capitalize} logged out successfully",
+             }
     else
       render json: { error: 'Invalid user type' }, status: :unprocessable_entity
     end

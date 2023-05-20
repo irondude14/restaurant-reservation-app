@@ -26,7 +26,7 @@ const RestaurantList = () => {
 
   return (
     <div>
-      <h1>Restaurants:</h1>
+      <h2>Restaurants:</h2>
       <ul>{restaurantList}</ul>
     </div>
   );

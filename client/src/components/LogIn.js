@@ -8,6 +8,7 @@ const LogIn = () => {
     password: '',
     user_type: 'owner',
   });
+  const [error, setError] = useState([]);
 
   function handleLogInInfo(e) {
     setLogInInfo({
