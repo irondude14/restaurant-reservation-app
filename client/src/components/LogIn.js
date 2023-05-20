@@ -41,7 +41,15 @@ const LogIn = () => {
     })
       .then((r) => r.json())
       .then((user) => {
-        // console.log(user.owner);
+        // if (user && user.owner) {
+        //   const owner = { owner: user.owner };
+        //   login(owner);
+        //   navigate('/home');
+        // } else if (user && user.user) {
+        //   const client = { user: user.user };
+        //   login(client);
+        //   navigate('/home');
+        // }
         login(user);
         navigate('/home');
       });

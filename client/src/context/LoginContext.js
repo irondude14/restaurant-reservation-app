@@ -12,29 +12,6 @@ const LoginProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (user && user.owner && 'id' in user.owner) {
-      fetch(`/owners/${user.owner.id}`)
-        .then((r) => r.json())
-        .then((owner) => {
-          // Update the user state outside of the useEffect hook
-          setUser(owner);
-        });
-    } else if (user && user.user && 'id' in user.user) {
-      fetch(`/users/${user.user.id}`)
-        .then((r) => r.json())
-        .then((user) => {
-          // Update the user state outside of the useEffect hook
-          setUser(user);
-        });
-    } else {
-      const storedUser = localStorage.getItem('_session_id');
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    }
-  }, []);
-
   console.log(user);
 
   function login(user) {

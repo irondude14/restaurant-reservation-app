@@ -14,18 +14,28 @@ const Navigation = () => {
     });
   }
 
+  // let name;
+
+  // if (user) {
+  //   if (user.owner) {
+  //     name = user.owner.name;
+  //   } else if (user.user) {
+  //     name = user.user.name;
+  //   }
+  // }
+
   // const userName = Object.keys(user);
 
   if (user) {
     return (
       <div>
         <nav>
-          <h3>Hello {user.owner.name}</h3>
+          <h3>Hello {user.name}</h3>
           <button>
             <Link to='/home'>Home Page </Link>
           </button>
           <button>
-            <Link to='/userspage'>{user.owner.name}</Link>
+            <Link to='/userspage'>{user.name}</Link>
           </button>
           <button onClick={logoutUser}>Log Out</button>
         </nav>

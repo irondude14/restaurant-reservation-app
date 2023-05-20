@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
       if owner && owner.authenticate(params[:password])
         session[:owner_id] = owner.id
-        render json: { message: 'Owner logged in successfully', owner: owner }
+        render json: owner
       else
         render json: {
                  error: 'Invalid email or password',
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        render json: { message: 'User logged in successfully', user: user }
+        render json: user
       else
         render json: {
                  error: 'Invalid email or password',
