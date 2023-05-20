@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { LoginContext } from '../context/LoginContext';
 
 const LogIn = () => {
   const [ownerFlag, setOwnerFlag] = useState(false);
@@ -8,7 +9,12 @@ const LogIn = () => {
     password: '',
     user_type: 'owner',
   });
-  const [error, setError] = useState([]);
+  // const [error, setError] = useState([]);
+
+  const { login } = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  console.log(logInInfo.user_type);
 
   function handleLogInInfo(e) {
     setLogInInfo({
@@ -26,23 +32,51 @@ const LogIn = () => {
     });
   }
 
+  function handleLogin(e) {
+    e.preventDefault();
+    fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(logInInfo),
+    })
+      .then((r) => r.json())
+      .then((user) => {
+        login(user);
+        navigate('/home');
+      });
+  }
+
   return (
     <form>
       <h3>Log In:</h3>
       <label htmlFor='email'>Email:</label>
-      <input type='text' name='email' onChange={handleLogInInfo} />
+      <input
+        type='text'
+        value={logInInfo.email}
+        name='email'
+        onChange={handleLogInInfo}
+      />
       <br />
       <label htmlFor='password'>Password:</label>
-      <input type='text' name='password' onChange={handleLogInInfo} />
+      <input
+        type='password'
+        value={logInInfo.password}
+        name='password'
+        onChange={handleLogInInfo}
+      />
       <br />
       {ownerFlag ? (
         <p>
-          <button type='submit'>User Log In</button>
+          <button type='submit' onClick={handleLogin}>
+            User Log In
+          </button>
           <button onClick={handleFlag}>Are you an Owner?</button>
         </p>
       ) : (
         <p>
-          <button type='submit'>Owner Log In</button>
+          <button type='submit' onClick={handleLogin}>
+            Owner Log In
+          </button>
           <button onClick={handleFlag}>Are you a Client?</button>
         </p>
       )}

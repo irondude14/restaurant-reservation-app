@@ -34,15 +34,17 @@ class SessionsController < ApplicationController
   # logout
 
   def destroy
-    case params[:user_type]
-    when 'owner', 'user'
-      session[params[:user_type].to_sym] = nil
-      render json: {
-               message:
-                 "#{params[:user_type].capitalize} logged out successfully",
-             }
-    else
-      render json: { error: 'Invalid user type' }, status: :unprocessable_entity
-    end
+    # case params[:user_type]
+    # when 'owner', 'user'
+    #   session[params[:user_type].to_sym] = nil
+    #   render json: {
+    #            message:
+    #              "#{params[:user_type].capitalize} logged out successfully",
+    #          }
+    # else
+    #   render json: { error: 'Invalid user type' }, status: :unprocessable_entity
+    # end
+
+    session.clear
   end
 end

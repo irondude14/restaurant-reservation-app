@@ -15,10 +15,13 @@ const LoginProvider = ({ children }) => {
 
   console.log(user);
 
-  function login() {}
+  function login(user) {
+    setUser(user);
+    localStorage.setItem('_session_id', JSON.stringify(user));
+  }
 
   function logout() {
-    setUser(false);
+    setUser(null);
     localStorage.removeItem('_session_id');
   }
 
