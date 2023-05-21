@@ -1,9 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('_session_id');
@@ -21,6 +24,7 @@ const LoginProvider = ({ children }) => {
 
   function logout() {
     setUser(null);
+    navigate('/home');
     localStorage.removeItem('_session_id');
   }
 

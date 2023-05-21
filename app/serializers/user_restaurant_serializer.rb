@@ -1,3 +1,3 @@
 class UserRestaurantSerializer < ActiveModel::Serializer
-  attributes :name, :address, :phone, :image_url
+  attributes :id, :name, :address, :phone, :image_url
 end
