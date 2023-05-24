@@ -1,17 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
+import { useParams } from 'react-router-dom';
 
 const ReservationForm = () => {
+  const { id } = useParams();
+  const { user } = useContext(LoginContext);
+
   const [reservation, setReservation] = useState({
+    restaurant_id: id,
     name: '',
     date_time: '',
     guest_number: '',
   });
 
-  const { user } = useContext(LoginContext);
-
   console.log(reservation);
-  console.log(user);
+  console.log(id);
 
   function handleChange(e) {
     setReservation({
@@ -22,6 +25,14 @@ const ReservationForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    fetch('/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reservation),
+    });
   }
 
   if (user && user.reservations && user.restaurants) {
