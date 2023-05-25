@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [errorsList, setErrorsList] = useState([]);
-  const [ownerFlag, setOwnerFlag] = useState(false);
-  const [ownerInfo, setOwnerInfo] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+  // const [ownerFlag, setOwnerFlag] = useState(false);
+  // const [ownerInfo, setOwnerInfo] = useState({
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  // });
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -19,17 +19,17 @@ const SignUp = () => {
   const { signup } = useContext(LoginContext);
   const navigate = useNavigate();
 
-  function handleFlag(e) {
-    e.preventDefault();
-    setOwnerFlag(!ownerFlag);
-  }
+  // function handleFlag(e) {
+  //   e.preventDefault();
+  //   setOwnerFlag(!ownerFlag);
+  // }
 
-  function handleOwnerInfo(e) {
-    setOwnerInfo({
-      ...ownerInfo,
-      [e.target.name]: e.target.value,
-    });
-  }
+  // function handleOwnerInfo(e) {
+  //   setOwnerInfo({
+  //     ...ownerInfo,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // }
 
   function handleUserInfo(e) {
     setUserInfo({
@@ -67,39 +67,39 @@ const SignUp = () => {
       });
   }
 
-  function createOwner(e) {
-    e.preventDefault();
+  // function createOwner(e) {
+  //   e.preventDefault();
 
-    const owner = { owner: ownerInfo };
-    fetch('/owners', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(owner),
-    })
-      .then((r) => r.json())
-      .then((owner) => {
-        if (!owner.errors) {
-          signup(owner);
-          navigate('/home');
-        } else {
-          setOwnerInfo({
-            name: '',
-            email: '',
-            password: '',
-          });
-          const currentErrors = owner.errors.map((e, index) => (
-            <li key={index}>{e}</li>
-          ));
-          setErrorsList(currentErrors);
-        }
-      });
-  }
+  //   const owner = { owner: ownerInfo };
+  //   fetch('/owners', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(owner),
+  //   })
+  //     .then((r) => r.json())
+  //     .then((owner) => {
+  //       if (!owner.errors) {
+  //         signup(owner);
+  //         navigate('/home');
+  //       } else {
+  //         setOwnerInfo({
+  //           name: '',
+  //           email: '',
+  //           password: '',
+  //         });
+  //         const currentErrors = owner.errors.map((e, index) => (
+  //           <li key={index}>{e}</li>
+  //         ));
+  //         setErrorsList(currentErrors);
+  //       }
+  //     });
+  // }
 
   return (
     <div>
-      {ownerFlag ? (
+      {/* {ownerFlag ? (
         <form onSubmit={createOwner}>
           <h3>Create Owner Account: </h3>
           <label htmlFor='name'>Name:</label>
@@ -135,43 +135,43 @@ const SignUp = () => {
           <br />
           <input type='submit' value='Register' id='submitBtn' />
         </form>
-      ) : (
-        <form onSubmit={createUser}>
-          <h3>Create User Account: </h3>
-          <label htmlFor='name'>Name:</label>
+      ) : (       )}*/}
+      <form onSubmit={createUser}>
+        <h3>Create User Account: </h3>
+        <label htmlFor='name'>Name:</label>
+        <input
+          type='text'
+          name='name'
+          value={userInfo.name}
+          required
+          onChange={handleUserInfo}
+        />
+        <br />
+        <label htmlFor='email'>Email:</label>
+        <input
+          type='text'
+          name='email'
+          value={userInfo.email}
+          required
+          onChange={handleUserInfo}
+        />
+        <br />
+        <label htmlFor='password_confirmation'>
+          Password:
           <input
-            type='text'
-            name='name'
-            value={userInfo.name}
+            type='password'
+            name='password'
+            value={userInfo.password}
             required
             onChange={handleUserInfo}
           />
-          <br />
-          <label htmlFor='email'>Email:</label>
-          <input
-            type='text'
-            name='email'
-            value={userInfo.email}
-            required
-            onChange={handleUserInfo}
-          />
-          <br />
-          <label htmlFor='password_confirmation'>
-            Password:
-            <input
-              type='password'
-              name='password'
-              value={userInfo.password}
-              required
-              onChange={handleUserInfo}
-            />
-          </label>
-          <br />
-          <button onClick={handleFlag}>Create Owner Account Instead</button>
-          <br />
-          <input type='submit' value='Register' id='submitBtn' />
-        </form>
-      )}
+        </label>
+        {/* <br /> */}
+        {/* <button onClick={handleFlag}>Create Owner Account Instead</button> */}
+        <br />
+        <input type='submit' value='Register' id='submitBtn' />
+      </form>
+
       <ul>{errorsList}</ul>
     </div>
   );
