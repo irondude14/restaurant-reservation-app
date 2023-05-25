@@ -8,11 +8,31 @@ const LoginProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem('_session_id');
+  //   if (storedUser) {
+  //     setUser(JSON.parse(storedUser));
+  //   }
+  // }, []);
+
   useEffect(() => {
-    const storedUser = localStorage.getItem('_session_id');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const fetchUser = async () => {
+      try {
+        const response = await fetch('/users/show', {
+          credentials: 'include', // Ensure cookies are sent with the request
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data);
+        } else {
+          // Handle error case if needed
+        }
+      } catch (error) {
+        // Handle error case if needed
+      }
+    };
+
+    fetchUser();
   }, []);
 
   console.log(user);

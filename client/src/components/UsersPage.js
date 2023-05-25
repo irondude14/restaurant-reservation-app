@@ -32,7 +32,7 @@ function UsersPage() {
     user &&
     user.reservations &&
     user.reservations.length > 0 &&
-    user.restaurants
+    user.reservations.restaurant
   ) {
     return (
       <div>
