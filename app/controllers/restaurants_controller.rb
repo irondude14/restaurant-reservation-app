@@ -43,7 +43,7 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find_by(id: params[:id])
     unless @restaurant
-      render json: { error: 'Retaurant not found' }, status: :not_found
+      render json: { error: 'Restaurant not found' }, status: :not_found
     end
   end
 
