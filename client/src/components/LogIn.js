@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { LoginContext } from '../context/LoginContext';
 
 const LogIn = () => {
-  const [ownerFlag, setOwnerFlag] = useState(false);
+  // const [ownerFlag, setOwnerFlag] = useState(false);
   const [logInInfo, setLogInInfo] = useState({
     email: '',
     password: '',
-    user_type: 'owner',
+    // user_type: 'owner',
   });
   // const [error, setError] = useState([]);
 
@@ -23,14 +23,14 @@ const LogIn = () => {
     });
   }
 
-  function handleFlag(e) {
-    e.preventDefault();
-    setOwnerFlag(!ownerFlag);
-    setLogInInfo({
-      ...logInInfo,
-      user_type: ownerFlag ? 'owner' : 'user',
-    });
-  }
+  // function handleFlag(e) {
+  //   e.preventDefault();
+  //   setOwnerFlag(!ownerFlag);
+  //   setLogInInfo({
+  //     ...logInInfo,
+  //     user_type: ownerFlag ? 'owner' : 'user',
+  //   });
+  // }
 
   function handleLogin(e) {
     e.preventDefault();
@@ -74,7 +74,12 @@ const LogIn = () => {
         onChange={handleLogInInfo}
       />
       <br />
-      {ownerFlag ? (
+      <p>
+        <button type='submit' onClick={handleLogin}>
+          Log In
+        </button>
+      </p>
+      {/* {ownerFlag ? (
         <p>
           <button type='submit' onClick={handleLogin}>
             User Log In
@@ -88,7 +93,7 @@ const LogIn = () => {
           </button>
           <button onClick={handleFlag}>Are you a Client?</button>
         </p>
-      )}
+      )} */}
       <br />
       <button>
         <Link to='/signup'>Don't have an account?</Link>
