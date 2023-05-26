@@ -6,16 +6,17 @@ class ReservationsController < ApplicationController
     render json: reservations
   end
 
-  # def update
-  #   if @reservation.update(reservation_params)
-  #     render json: @reservation
-  #   else
-  #     render json: {
-  #              errors: reservation.errors.full_messages,
-  #            },
-  #            status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    reservation = current_user.reservations.find(params[:id])
+    if reservation.update(reservation_params)
+      render json: reservation
+    else
+      render json: {
+               errors: reservation.errors.full_messages,
+             },
+             status: :unprocessable_entity
+    end
+  end
 
   def create
     reservation = current_user.reservations.create(reservation_params)
@@ -29,10 +30,11 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @reservation.destroy
-  #   render json: { message: 'Reservation deleted' }, status: :no_content
-  # end
+  def destroy
+    reservation = current_user.reservations.find(params[:id])
+    reservation.destroy
+    render json: { message: 'Reservation deleted successfully' }
+  end
 
   private
 
