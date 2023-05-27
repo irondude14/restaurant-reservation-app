@@ -14,8 +14,6 @@ const LogIn = () => {
   const { login } = useContext(LoginContext);
   const navigate = useNavigate();
 
-  console.log(logInInfo.user_type);
-
   function handleLogInInfo(e) {
     setLogInInfo({
       ...logInInfo,

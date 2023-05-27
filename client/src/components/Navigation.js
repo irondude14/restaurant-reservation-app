@@ -8,7 +8,9 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   function logoutUser() {
-    fetch('/logout').then(() => {
+    fetch('/logout', {
+      method: 'DELETE',
+    }).then(() => {
       logout();
       navigate('/home');
     });

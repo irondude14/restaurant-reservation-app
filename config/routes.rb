@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :ownerships
   resources :restaurants
-  resources :owners, only: %i[show update destroy create]
+  # resources :owners, only: %i[show update destroy create]
   resources :reservations
   resources :users, only: %i[show update destroy create]
 

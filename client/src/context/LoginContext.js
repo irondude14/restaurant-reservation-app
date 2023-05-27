@@ -35,8 +35,6 @@ const LoginProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  console.log(user);
-
   function login(user) {
     setUser(user);
     localStorage.setItem('_session_id', JSON.stringify(user));

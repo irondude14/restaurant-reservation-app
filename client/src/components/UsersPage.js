@@ -27,8 +27,6 @@ function UsersPage() {
   //     }
   //   }, [user]);
 
-  console.log(user);
-
   function deleteAcc(id) {
     fetch(`/users/${id}`, {
       method: 'DELETE',
@@ -57,6 +55,9 @@ function UsersPage() {
   ) {
     return (
       <div>
+        <button>
+          <Link to={`/updateuser`}>Update Your Info</Link>
+        </button>
         <button onClick={() => deleteAcc(user.id)}>Delete Account</button>
         <h3>Your reservations:</h3>
         <ul>

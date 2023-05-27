@@ -10,6 +10,7 @@ import Restaurant from './components/Restaurant';
 import SignUp from './components/SignUp';
 import UsersPage from './components/UsersPage';
 import UpdateReservationForm from './components/UpdateReservationForm';
+import UpdateUserInfo from './components/UpdateUserInfo';
 import { LoginProvider } from './context/LoginContext';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
               path='updatereservation/:id'
               element={<UpdateReservationForm />}
             />
+            <Route path='updateuser' element={<UpdateUserInfo />} />
             <Route path='restaurant/:id' element={<Restaurant />} />
           </Route>
         </Routes>
