@@ -9,6 +9,7 @@ import ReservationForm from './components/ReservationForm';
 import Restaurant from './components/Restaurant';
 import SignUp from './components/SignUp';
 import UsersPage from './components/UsersPage';
+import UpdateReservationForm from './components/UpdateReservationForm';
 import { LoginProvider } from './context/LoginContext';
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
             <Route path='signup' element={<SignUp />} />
             <Route path='userspage' element={<UsersPage />} />
             <Route path='reservation/:id' element={<ReservationForm />} />
+            <Route
+              path='updatereservation/:id'
+              element={<UpdateReservationForm />}
+            />
             <Route path='restaurant/:id' element={<Restaurant />} />
           </Route>
         </Routes>

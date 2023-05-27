@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
+import { Link } from 'react-router-dom';
 
 function UsersPage() {
   //   const [loggedUser, setLoggedUser] = useState([]);
@@ -84,7 +85,11 @@ function UsersPage() {
                     <p>Phone: {restaurant.phone}</p>
                   </div>
                 )}
-                <button>Edit</button>
+                <button>
+                  <Link to={`/updatereservation/${reservation.id}`}>
+                    Update
+                  </Link>
+                </button>
                 <button onClick={() => deleteReserv(reservation.id)}>
                   Delete
                 </button>

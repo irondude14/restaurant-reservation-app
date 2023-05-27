@@ -6,6 +6,15 @@ class ReservationsController < ApplicationController
     render json: reservations
   end
 
+  def show
+    reservation = current_user.reservations.find(params[:id])
+    if reservation
+      render json: reservation
+    else
+      render json: { error: 'Reservation not found' }, status: :not_found
+    end
+  end
+
   def update
     reservation = current_user.reservations.find(params[:id])
     if reservation.update(reservation_params)
