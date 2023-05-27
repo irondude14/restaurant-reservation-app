@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { LoginContext } from '../context/LoginContext';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ReservationForm = () => {
   const { id } = useParams();
-  const { user } = useContext(LoginContext);
+  const { user, setUser } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   const [reservation, setReservation] = useState({
     restaurant_id: id,
@@ -32,15 +33,24 @@ const ReservationForm = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(reservation),
-    });
+    })
+      .then((r) => r.json())
+      .then((newReserv) => {
+        setUser((prevUser) => ({
+          ...prevUser,
+          reservations: [...prevUser.reservations, newReserv],
+        }));
+        navigate('/userspage');
+      });
   }
 
-  if (user && user.reservations && user.restaurants) {
+  if (user && user.reservations) {
     return (
       <form onSubmit={handleSubmit}>
         <h3>ReservationForm</h3>
         <label htmlFor='name'>Name:</label>
         <input
+          required
           type='text'
           value={reservation.name}
           name='name'
@@ -49,6 +59,7 @@ const ReservationForm = () => {
         <br />
         <label htmlFor='reservation-date-time'>Choose Date & Time:</label>
         <input
+          required
           type='datetime-local'
           value={reservation.date_time}
           name='date_time'
@@ -58,6 +69,7 @@ const ReservationForm = () => {
         <label htmlFor='number-of-guests'>
           Number of Guests:
           <input
+            required
             type='number'
             name='guest_number'
             value={reservation.guest_number}

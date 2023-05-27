@@ -3,7 +3,7 @@ import { LoginContext } from '../context/LoginContext';
 
 function UsersPage() {
   //   const [loggedUser, setLoggedUser] = useState([]);
-  const { user } = useContext(LoginContext);
+  const { user, setUser } = useContext(LoginContext);
 
   //   useEffect(() => {
   //     if (user && user.owner && 'id' in user.owner) {
@@ -28,11 +28,23 @@ function UsersPage() {
 
   console.log(user);
 
+  function deleteReserv(id) {
+    fetch(`/reservations/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }).then(
+      setUser((prevUser) => ({
+        ...prevUser,
+        reservations: prevUser.reservations.filter((r) => r.id !== id),
+      }))
+    );
+  }
+
   if (
-    user
-    // &&
+    user &&
     // user.reservations &&
-    // user.reservations.length > 0 &&
+    user.reservations.length > 0
+    // &&
     // user.restaurants
   ) {
     return (
@@ -65,7 +77,9 @@ function UsersPage() {
                   </div>
                 )}
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => deleteReserv(reservation.id)}>
+                  Delete
+                </button>
               </li>
             );
           })}
