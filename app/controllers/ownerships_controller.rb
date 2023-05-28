@@ -1,10 +1,10 @@
 class OwnershipsController < ApplicationController
-  before_action :set_ownership, only: [:show, :update, :destroy]
+  before_action :set_ownership, only: %i[show update destroy]
+  before_action :authorize_ownership, only: %i[show update destroy]
 
   # GET /ownerships
   def index
     @ownerships = Ownership.all
-
     render json: @ownerships
   end
 
@@ -39,13 +39,20 @@ class OwnershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ownership
-      @ownership = Ownership.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def ownership_params
-      params.require(:ownership).permit(:user_id, :restaurant_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ownership
+    @ownership = Ownership.find(params[:id])
+  end
+
+  def authorize_ownership
+    return if @ownership.user == current_user
+
+    render json: { error: 'Not Authorized' }, status: :unauthorized
+  end
+
+  # Only allow a list of trusted parameters through.
+  def ownership_params
+    params.require(:ownership).permit(:user_id, :restaurant_id)
+  end
 end
