@@ -3,4 +3,8 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :reservations, serializer: ReservationSerializer
   has_many :restaurants, serializer: UserRestaurantSerializer
+  has_many :owned_restaurants,
+           through: :ownerships,
+           source: :restaurant,
+           serializer: OwnedRestaurantSerializer
 end

@@ -16,23 +16,13 @@ const LoginProvider = ({ children }) => {
   // }, []);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch('/users/show', {
-          credentials: 'include', // Ensure cookies are sent with the request
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data);
-        } else {
-          // Handle error case if needed
-        }
-      } catch (error) {
-        // Handle error case if needed
-      }
-    };
-
-    fetchUser();
+    fetch('/users/show', {
+      credentials: 'include', // Ensure cookies are sent with the request
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        setUser(data);
+      });
   }, []);
 
   function login(user) {

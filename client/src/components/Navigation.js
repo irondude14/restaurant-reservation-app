@@ -16,18 +16,6 @@ const Navigation = () => {
     });
   }
 
-  // let name;
-
-  // if (user) {
-  //   if (user.owner) {
-  //     name = user.owner.name;
-  //   } else if (user.user) {
-  //     name = user.user.name;
-  //   }
-  // }
-
-  // const userName = Object.keys(user);
-
   if (user) {
     return (
       <div>

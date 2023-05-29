@@ -14,9 +14,6 @@ const ReservationForm = () => {
     guest_number: '',
   });
 
-  console.log(reservation);
-  console.log(id);
-
   function handleChange(e) {
     setReservation({
       ...reservation,
@@ -80,10 +77,10 @@ const ReservationForm = () => {
         <input type='submit' value='Reserve' id='submitBtn' />
       </form>
     );
-  } else if (user && user.restaurants) {
+  } else if (!user) {
     return (
       <div>
-        <p>Please LogIn as Client</p>
+        <p>Please LogIn</p>
       </div>
     );
   } else {

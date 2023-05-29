@@ -30,8 +30,6 @@ function UpdateUserInfo() {
     setUpdateInfo(user || {});
   }, [user]);
 
-  console.log(updateInfo);
-
   function handleUserInfo(e) {
     setUpdateInfo({
       ...updateInfo,

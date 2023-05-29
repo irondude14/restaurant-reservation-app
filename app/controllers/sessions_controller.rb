@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: user, include: { reservations: :restaurant }
+      render json: user,
+             include: {
+               reservations: :restaurant,
+               owned_restaurants: {
+               },
+             }
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end

@@ -11,6 +11,8 @@ import SignUp from './components/SignUp';
 import UsersPage from './components/UsersPage';
 import UpdateReservationForm from './components/UpdateReservationForm';
 import UpdateUserInfo from './components/UpdateUserInfo';
+import RestaurantForm from './components/RestaurantForm';
+import UpdateRestaurantForm from './components/UpdateRestaurantForm';
 import { LoginProvider } from './context/LoginContext';
 
 function App() {
@@ -28,6 +30,11 @@ function App() {
             <Route
               path='updatereservation/:id'
               element={<UpdateReservationForm />}
+            />
+            <Route path='newrestaurant' element={<RestaurantForm />} />
+            <Route
+              path='updaterestaurant/:id'
+              element={<UpdateRestaurantForm />}
             />
             <Route path='updateuser' element={<UpdateUserInfo />} />
             <Route path='restaurant/:id' element={<Restaurant />} />

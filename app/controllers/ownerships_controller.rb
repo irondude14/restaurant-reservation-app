@@ -45,6 +45,17 @@ class OwnershipsController < ApplicationController
     @ownership = Ownership.find(params[:id])
   end
 
+  def current_user
+    user = User.find_by(id: session[:user_id])
+
+    unless user
+      render json: { error: 'User not found' }, status: :not_found
+      return
+    end
+
+    user
+  end
+
   def authorize_ownership
     return if @ownership.user == current_user
 

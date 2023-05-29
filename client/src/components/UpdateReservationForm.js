@@ -47,6 +47,10 @@ function UpdateReservationForm() {
       });
   }
 
+  if (!updatedReserv) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <form onSubmit={updateReservation}>
       <h3>Update your Reservation:</h3>

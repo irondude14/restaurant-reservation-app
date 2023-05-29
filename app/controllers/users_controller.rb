@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   def show
     render json: @user,
            include: {
-             reservations: {
-               include: :restaurant,
-             },
+             reservations: :restaurant,
              owned_restaurants: {
              },
            }
@@ -46,7 +44,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user =
-      User.includes(:reservations, :owned_restaurants).find_by(
+      User.includes(:reservations, owned_restaurants: :ownerships).find_by(
         id: session[:user_id],
       )
 
