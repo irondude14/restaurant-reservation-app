@@ -34,7 +34,7 @@ const LogIn = () => {
   }
 
   return (
-    <form>
+    <form className='form'>
       <h3>Log In:</h3>
       <label htmlFor='email'>Email:</label>
       <input
@@ -53,13 +53,13 @@ const LogIn = () => {
       />
       <br />
       <p>
-        <button type='submit' onClick={handleLogin}>
+        <button id='submitBtn' type='submit' onClick={handleLogin}>
           Log In
         </button>
       </p>
       <br />
-      <button>
-        <Link to='/signup'>Don't have an account?</Link>
+      <button id='signupBtn'>
+        <Link to='/signup'>Sign Up</Link>
       </button>
     </form>
   );

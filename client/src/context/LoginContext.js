@@ -17,11 +17,17 @@ const LoginProvider = ({ children }) => {
 
   useEffect(() => {
     fetch('/users/show', {
-      credentials: 'include', // Ensure cookies are sent with the request
+      // credentials: 'include',
     })
-      .then((r) => r.json())
-      .then((data) => {
-        setUser(data);
+      .then((r) => {
+        if (r.ok) {
+          return r.json();
+        } else {
+          setUser(null);
+        }
+      })
+      .then((current_user) => {
+        setUser(current_user);
       });
   }, []);
 

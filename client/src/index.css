@@ -19,3 +19,75 @@ img {
 ul {
   list-style: none;
 }
+
+.form {
+  max-width: 15rem;
+  margin-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+}
+
+.form h3 {
+  margin-left: 6px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.form label {
+  display: block;
+  padding: 0.2rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form input {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#submitBtn {
+  border: 0;
+  background: #343050;
+  padding: 0.3rem;
+  color: white;
+  display: flex;
+  flex-grow: 0;
+  margin: auto;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  align-items: flex-start;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#submitBtn:hover {
+  background: #161d2c;
+}
+
+#signupBtn {
+  border: 0;
+  background: #343050;
+  padding: 0.3rem;
+  color: white;
+  display: flex;
+  flex-grow: 0;
+  margin: 0.2rem;
+  margin-left: auto;
+  align-items: flex-start;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#signupBtn:hover {
+  background: #161d2c;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

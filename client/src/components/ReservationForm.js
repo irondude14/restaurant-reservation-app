@@ -43,7 +43,7 @@ const ReservationForm = () => {
 
   if (user && user.reservations) {
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form'>
         <h3>ReservationForm</h3>
         <label htmlFor='name'>Name:</label>
         <input
@@ -69,6 +69,8 @@ const ReservationForm = () => {
             required
             type='number'
             name='guest_number'
+            min='1'
+            max='6'
             value={reservation.guest_number}
             onChange={handleChange}
           />

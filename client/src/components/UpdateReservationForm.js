@@ -52,7 +52,7 @@ function UpdateReservationForm() {
   }
 
   return (
-    <form onSubmit={updateReservation}>
+    <form onSubmit={updateReservation} className='form'>
       <h3>Update your Reservation:</h3>
       <label htmlFor='name'>Name:</label>
       <input

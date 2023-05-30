@@ -44,7 +44,7 @@ function RestaurantForm() {
 
   if (user) {
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form'>
         <h3>Add a Restaurant:</h3>
         <label htmlFor='name'>Name:</label>
         <input

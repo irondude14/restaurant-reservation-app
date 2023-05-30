@@ -42,7 +42,7 @@ function UpdateUserInfo() {
   }
 
   return (
-    <form onSubmit={updateUser}>
+    <form onSubmit={updateUser} className='form'>
       <h3>Update Account Info: </h3>
       <label htmlFor='name'>Name:</label>
       <input

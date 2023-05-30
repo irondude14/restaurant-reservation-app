@@ -57,7 +57,7 @@ function UpdateRestaurantForm() {
   }
 
   return (
-    <form onSubmit={updateRestaurant}>
+    <form onSubmit={updateRestaurant} className='form'>
       <h3>Update Restaurant</h3>
       <label htmlFor='name'>Name:</label>
       <input
