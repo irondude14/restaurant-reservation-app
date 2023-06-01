@@ -20,7 +20,7 @@ const Navigation = () => {
     return (
       <div className='navbar'>
         <nav>
-          <h3>Hello {user.name}</h3>
+          <h3>Hello {user.name.split(' ')[0]}!</h3>
           <button id='navbarBtn'>
             <Link to='/home'>Home Page </Link>
           </button>

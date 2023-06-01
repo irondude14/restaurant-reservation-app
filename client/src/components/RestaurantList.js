@@ -25,7 +25,7 @@ const RestaurantList = () => {
   });
 
   return (
-    <div>
+    <div className='home-page-container'>
       <h2>Restaurants:</h2>
       <ul className='restaurant-container'>{restaurantList}</ul>
     </div>

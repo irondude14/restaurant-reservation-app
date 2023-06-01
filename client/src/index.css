@@ -70,6 +70,7 @@ ul {
   display: flex;
   flex-direction: column;
   background: whitesmoke;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .form h3 {
@@ -117,13 +118,37 @@ a {
   flex-wrap: wrap;
 }
 
+.home-page-container {
+  position: relative;
+}
+
+.home-page-container::before,
+.home-page-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 2px;
+  width: 50%;
+  background-color: #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.home-page-container::before {
+  left: 0;
+}
+
+.home-page-container::after {
+  right: 0;
+}
+
 .restaurant-card {
   flex: 1 0;
   max-width: 30rem;
   margin: 0.5rem auto;
   background: whitesmoke;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .restaurant-card:hover {
@@ -151,5 +176,51 @@ a {
   margin: 0.5rem auto;
   background: whitesmoke;
   border-radius: 4px;
-  padding: 5px;
+  padding: 0.5rem;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.users-page-navbar {
+  justify-content: center;
+}
+
+.users-page-container {
+  position: relative;
+}
+
+.users-page-container::before,
+.users-page-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 2px;
+  width: 50%;
+  background-color: #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.users-page-container::before {
+  left: 0;
+}
+
+.users-page-container::after {
+  right: 0;
+}
+
+#userspageBtn {
+  border: 0;
+  background: #343050;
+  padding: 0.3rem;
+  color: white;
+  flex-grow: 0;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#userspageBtn:hover {
+  background: #161d2c;
 }
