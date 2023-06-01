@@ -16,16 +16,16 @@ const Restaurant = () => {
   }
 
   return (
-    <div>
+    <div id='ind_rest'>
       <h2>{restaurant.name}</h2>
       <p>{restaurant.description}</p>
       <p>{restaurant.address}</p>
       <p>{restaurant.phone}</p>
       <p>Price: {'$'.repeat(restaurant.price)}</p>
       <img src={restaurant.image_url} alt={restaurant.name} />
-      <p>
+      <button id='submitBtn'>
         <Link to={`/reservation/${id}`}>Make a Reservation</Link>
-      </p>
+      </button>
     </div>
   );
 };

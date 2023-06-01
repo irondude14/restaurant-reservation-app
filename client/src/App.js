@@ -1,5 +1,3 @@
-import './App.css';
-
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Home from './components/Home';
@@ -17,7 +15,7 @@ import { LoginProvider } from './context/LoginContext';
 
 function App() {
   return (
-    <div className='App'>
+    <div>
       <LoginProvider>
         <Routes>
           <Route path='/' element={<Navigation />}>

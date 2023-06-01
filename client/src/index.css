@@ -1,10 +1,31 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  justify-content: center;
+}
+
+html {
+  --s: 100px;
+  --c1: #f8b195;
+  --c2: #355c7d;
+  --_g: var(--c2) 6% 14%, var(--c1) 16% 24%, var(--c2) 26% 34%,
+    var(--c1) 36% 44%, var(--c2) 46% 54%, var(--c1) 56% 64%, var(--c2) 66% 74%,
+    var(--c1) 76% 84%, var(--c2) 86% 94%;
+  background: radial-gradient(
+      100% 100% at 100% 0,
+      var(--c1) 4%,
+      var(--_g),
+      #0008 96%,
+      #0000
+    ),
+    radial-gradient(
+        100% 100% at 0 100%,
+        #0000,
+        #0008 4%,
+        var(--_g),
+        var(--c1) 96%
+      )
+      var(--c1);
+  background-size: var(--s) var(--s);
 }
 
 code {
@@ -20,11 +41,31 @@ ul {
   list-style: none;
 }
 
+.navbar {
+  justify-content: center;
+}
+
+#navbarBtn {
+  border: 0;
+  background: #343050;
+  padding: 0.3rem;
+  color: white;
+  flex-grow: 0;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#navbarBtn:hover {
+  background: #161d2c;
+}
+
 .form {
   max-width: 15rem;
-  margin-top: 4rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 4rem auto;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -32,30 +73,26 @@ ul {
 }
 
 .form h3 {
-  margin-left: 6px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin: 6px;
 }
 
 .form label {
   display: block;
   padding: 0.2rem;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
 .form input {
   display: block;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
-#submitBtn {
+#submitBtn,
+#signupBtn {
   border: 0;
   background: #343050;
   padding: 0.3rem;
   color: white;
-  display: flex;
   flex-grow: 0;
   margin: auto;
   margin-top: 0.2rem;
@@ -65,24 +102,7 @@ ul {
   cursor: pointer;
 }
 
-#submitBtn:hover {
-  background: #161d2c;
-}
-
-#signupBtn {
-  border: 0;
-  background: #343050;
-  padding: 0.3rem;
-  color: white;
-  display: flex;
-  flex-grow: 0;
-  margin: 0.2rem;
-  margin-left: auto;
-  align-items: flex-start;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
+#submitBtn:hover,
 #signupBtn:hover {
   background: #161d2c;
 }
@@ -90,4 +110,46 @@ ul {
 a {
   text-decoration: none;
   color: black;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-card {
+  flex: 1 0;
+  max-width: 30rem;
+  margin: 0.5rem auto;
+  background: whitesmoke;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.02);
+}
+
+.restaurant-card h3 {
+  margin: auto;
+  padding-bottom: 6px;
+}
+
+.restaurant-card img {
+  width: 25rem;
+}
+
+.restaurant-card p {
+  width: 30rem;
+  margin: auto;
+  padding-top: 6;
+}
+
+#ind_rest {
+  flex: 1 0;
+  max-width: 30rem;
+  margin: 0.5rem auto;
+  background: whitesmoke;
+  border-radius: 4px;
+  padding: 5px;
 }

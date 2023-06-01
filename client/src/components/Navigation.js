@@ -18,28 +18,30 @@ const Navigation = () => {
 
   if (user) {
     return (
-      <div>
+      <div className='navbar'>
         <nav>
           <h3>Hello {user.name}</h3>
-          <button>
+          <button id='navbarBtn'>
             <Link to='/home'>Home Page </Link>
           </button>
-          <button>
+          <button id='navbarBtn'>
             <Link to='/userspage'>{user.name}</Link>
           </button>
-          <button onClick={logoutUser}>Log Out</button>
+          <button id='navbarBtn' onClick={logoutUser}>
+            Log Out
+          </button>
         </nav>
         <Outlet />
       </div>
     );
   } else {
     return (
-      <div>
+      <div className='navbar'>
         <nav>
-          <button>
+          <button id='navbarBtn'>
             <Link to='/home'>Home Page </Link>
           </button>
-          <button>
+          <button id='navbarBtn'>
             <Link to='/login'>Log In </Link>
           </button>
         </nav>
