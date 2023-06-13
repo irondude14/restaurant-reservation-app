@@ -16,8 +16,6 @@ function UpdateRestaurantForm() {
     image_url: '',
   });
 
-  console.log(updatedRestaurant);
-
   useEffect(() => {
     fetch(`/restaurants/${id}`)
       .then((r) => r.json())
