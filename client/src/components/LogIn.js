@@ -52,15 +52,13 @@ const LogIn = () => {
         onChange={handleLogInInfo}
       />
       <br />
-      <p>
-        <button id='submitBtn' type='submit' onClick={handleLogin}>
-          Log In
-        </button>
-      </p>
-      <br />
-      <button id='signupBtn'>
-        <Link to='/signup'>Sign Up</Link>
+      <button id='submitBtn' type='submit' onClick={handleLogin}>
+        Log In
       </button>
+      <br />
+      <Link to='/signup' className='signup'>
+        SignUp
+      </Link>
     </form>
   );
 };

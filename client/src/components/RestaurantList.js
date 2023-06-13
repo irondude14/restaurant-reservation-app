@@ -17,7 +17,7 @@ const RestaurantList = () => {
           <h3>{r.name}</h3>
           <p>{r.description}</p>
           <p>
-            <img src={r.image_url} alt='vesuvio' />
+            <img src={r.image_url} alt={r.name} />
           </p>
         </Link>
       </li>

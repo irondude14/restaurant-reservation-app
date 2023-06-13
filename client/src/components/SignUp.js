@@ -50,7 +50,7 @@ const SignUp = () => {
   }
 
   return (
-    <div>
+    <div className='form'>
       <form onSubmit={createUser}>
         <h3>Create User Account: </h3>
         <label htmlFor='name'>Name:</label>

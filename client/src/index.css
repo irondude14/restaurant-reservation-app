@@ -36,24 +36,6 @@ ul {
   justify-content: center;
 }
 
-#navbarBtn {
-  border: 0;
-  background: #6600cc;
-  padding: 0.3rem;
-  color: black;
-  flex-grow: 0;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  margin-left: 0.2rem;
-  align-items: center;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-#navbarBtn:hover {
-  background: #7800dc;
-}
-
 .form {
   max-width: 15rem;
   margin: 4rem auto;
@@ -79,29 +61,91 @@ ul {
   margin: 0 auto;
 }
 
-#submitBtn,
-#signupBtn {
-  border: 0;
-  background: #6600cc;
-  padding: 0.3rem;
-  color: black;
-  flex-grow: 0;
-  margin: auto;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  align-items: flex-start;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-#submitBtn:hover,
-#signupBtn:hover {
-  background: #7800dc;
-}
-
 a {
   text-decoration: none;
   color: black;
+}
+
+a.signup {
+  margin-left: 11rem;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+}
+
+#navbarBtn {
+  border: 1px solid rgba(183, 186, 189, 1);
+  padding: 0.2rem;
+  background: white;
+  color: black;
+  flex-grow: 0;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#navbarBtn:hover {
+  background: lightgray;
+}
+
+#regularBtn {
+  border: 0.5px solid rgba(183, 186, 189, 1);
+  padding: 0.1rem;
+  background: white;
+  color: black;
+  flex-grow: 0;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#regularBtn:hover {
+  background: lightgray;
+}
+
+#submitBtn {
+  border: 0.5px solid rgba(183, 186, 189, 1);
+  padding: 0.15rem;
+  background: white;
+  color: black;
+  flex-grow: 0;
+  margin: auto;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#submitBtn:hover {
+  background: lightgray;
+}
+
+#signupBtn {
+  border: 0.5px solid rgba(183, 186, 189, 1);
+  padding: 0.15rem;
+  background: white;
+  color: black;
+  flex-grow: 0;
+  margin: auto;
+  margin-right: 0.5rem;
+  margin-bottom: 0.2rem;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#signupBtn:hover {
+  background: lightgray;
 }
 
 .restaurant-container {
@@ -111,13 +155,14 @@ a {
 
 .home-page-container {
   position: relative;
+  padding: 10px;
 }
 
 .home-page-container::before,
 .home-page-container::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: 10px;
   height: 2px;
   width: 50%;
   background-color: #ccc;
@@ -158,7 +203,7 @@ a {
 .restaurant-card p {
   width: 30rem;
   margin: auto;
-  padding-top: 6;
+  padding-top: 6px;
 }
 
 #ind_rest {
@@ -175,15 +220,25 @@ a {
   justify-content: center;
 }
 
+.users-page-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  justify-content: center;
+}
+
 .users-page-container {
   position: relative;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .users-page-container::before,
 .users-page-container::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: 10px;
   height: 2px;
   width: 50%;
   background-color: #ccc;
@@ -198,20 +253,41 @@ a {
   right: 0;
 }
 
-#userspageBtn {
-  border: 0;
-  background: #6600cc;
-  padding: 0.3rem;
-  color: black;
-  flex-grow: 0;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  margin-left: 0.2rem;
+.users-page-reservation-card {
+  display: flex;
   align-items: center;
-  text-transform: uppercase;
-  cursor: pointer;
+  max-width: 36rem;
+  margin: 0.5rem auto;
+  background: whitesmoke;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-#userspageBtn:hover {
-  background: #7800dc;
+.users-page-reservation-card img {
+  width: 150px;
+  margin-right: auto;
+}
+
+.users-page-reservation-card p {
+  margin: 0;
+}
+
+.users-page-restaurant-card {
+  display: flex;
+  align-items: center;
+  background: whitesmoke;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 5rem;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.users-page-restaurant-card img {
+  width: 150px;
+  margin-bottom: 1rem;
+}
+
+.users-page-restaurant-card p {
+  margin: 0;
 }
