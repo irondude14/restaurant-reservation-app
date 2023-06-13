@@ -11,6 +11,13 @@ const RestaurantList = () => {
   }, []);
 
   const restaurantList = restaurants.map((r) => {
+    const uniqueReserv = new Set();
+
+    if (r.users && r.users.length > 0) {
+      r.users.forEach((user) => uniqueReserv.add(user.name));
+    }
+    const uniqueUserNames = Array.from(uniqueReserv);
+
     return (
       <li key={r.id} className='restaurant-card'>
         <Link to={`/restaurant/${r.id}`}>
@@ -20,6 +27,16 @@ const RestaurantList = () => {
             <img src={r.image_url} alt={r.name} />
           </p>
         </Link>
+        {uniqueUserNames.length > 0 ? (
+          <div>
+            <h4>Current reservations: </h4>
+            <ul>
+              {uniqueUserNames.map((user) => (
+                <li key={user}>{user}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </li>
     );
   });
