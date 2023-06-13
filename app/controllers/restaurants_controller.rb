@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    render json: @restaurant, include: :owners
+    render json: @restaurant
   end
 
   def create
@@ -55,16 +55,6 @@ class RestaurantsController < ApplicationController
   end
 
   private
-
-  # def current_user
-  # user = User.find_by(id: session[:user_id])
-  #   unless user
-  #     render json: { error: 'User not found' }, status: :not_found
-  #     return
-  #   end
-
-  #   user
-  # end
 
   def set_restaurant
     @restaurant = Restaurant.find_by(id: params[:id])

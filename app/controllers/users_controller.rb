@@ -2,12 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
 
   def show
-    render json: @user,
-           include: {
-             reservations: :restaurant,
-             owned_restaurants: {
-             },
-           }
+    render json: @user
   end
 
   def update
@@ -44,10 +39,7 @@ class UsersController < ApplicationController
 
   def set_user
     @user =
-      User.includes(:reservations, owned_restaurants: :ownerships).find_by(
-        id: session[:user_id],
-      )
-
+      User.find_by(id: session[:user_id])
     render json: { error: 'Not Authorized' }, status: :not_found unless @user
   end
 

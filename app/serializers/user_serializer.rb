@@ -1,10 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :password
-
-  has_many :reservations, serializer: ReservationSerializer
+  attributes :id, :name, :email
+  has_many :reservations
   has_many :restaurants, serializer: UserRestaurantSerializer
-  has_many :owned_restaurants,
-           through: :ownerships,
-           source: :restaurant,
-           serializer: OwnedRestaurantSerializer
+  has_many :owned_restaurants
 end

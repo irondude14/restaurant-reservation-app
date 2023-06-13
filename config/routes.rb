@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :ownerships
   resources :restaurants
-  
   resources :reservations
   resources :users, only: %i[show update destroy create]
 
