@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
                owned_restaurants: {
                },
              }
-    else
-      render json: { error: 'Invalid email or password' }, status: :unauthorized
-    end
+      else
+        render json: { error: 'Invalid email or password' }, status: :unauthorized
+      end
   end
 
   # logout

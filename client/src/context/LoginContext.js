@@ -8,22 +8,13 @@ const LoginProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem('_session_id');
-  //   if (storedUser) {
-  //     setUser(JSON.parse(storedUser));
-  //   }
-  // }, []);
-
   useEffect(() => {
-    fetch('/users/show', {
-      // credentials: 'include',
-    })
+    fetch('/users/show')
       .then((r) => {
         if (r.ok) {
           return r.json();
         } else {
-          setUser(null);
+          throw new Error('User not authenticated');
         }
       })
       .then((current_user) => {

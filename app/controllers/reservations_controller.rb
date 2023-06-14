@@ -75,7 +75,6 @@
 # end
 
 class ReservationsController < ApplicationController
-  # before_action :authorize
 
   def index
     reservations = current_user.reservations
@@ -122,10 +121,6 @@ class ReservationsController < ApplicationController
   end
 
   private
-
-  # def authorize
-  #   return render json: { error: 'Not authorized' }, status: :unauthorized unless current_user
-  # end
 
   def reservation_params
     params.require(:reservation).permit(

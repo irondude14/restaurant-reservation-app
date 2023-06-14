@@ -7,7 +7,7 @@ const LogIn = () => {
     email: '',
     password: '',
   });
-  // const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
 
   const { login } = useContext(LoginContext);
   const navigate = useNavigate();
@@ -26,16 +26,26 @@ const LogIn = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(logInInfo),
     })
-      .then((r) => r.json())
+      .then((r) => {
+        if (r.ok) {
+          return r.json();
+        } else {
+          throw new Error('Invalid email or password');
+        }
+      })
       .then((user) => {
         login(user);
         navigate('/home');
+      })
+      .catch((error) => {
+        setError(error.message);
       });
   }
 
   return (
     <form className='form'>
       <h3>Log In:</h3>
+      {error ? <p>{error}</p> : null}
       <label htmlFor='email'>Email:</label>
       <input
         type='text'
