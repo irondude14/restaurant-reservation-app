@@ -3,7 +3,7 @@ import { LoginContext } from '../context/LoginContext';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-  const [errorsList, setErrorsList] = useState([]);
+  const [errorsList, setErrorsList] = useState(null);
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -61,7 +61,6 @@ const SignUp = () => {
           required
           onChange={handleUserInfo}
         />
-        <br />
         <label htmlFor='email'>Email:</label>
         <input
           type='text'
@@ -70,7 +69,6 @@ const SignUp = () => {
           required
           onChange={handleUserInfo}
         />
-        <br />
         <label htmlFor='password_confirmation'>
           Password:
           <input
@@ -81,11 +79,9 @@ const SignUp = () => {
             onChange={handleUserInfo}
           />
         </label>
-        <br />
         <input type='submit' value='Register' id='submitBtn' />
       </form>
-
-      <ul>{errorsList}</ul>
+      {errorsList ? <ul>{errorsList}</ul> : null}
     </div>
   );
 };
