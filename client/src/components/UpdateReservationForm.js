@@ -62,10 +62,20 @@ function UpdateReservationForm() {
         name='name'
         onChange={handleChange}
       />
-      <br />
+      <p>
+        {' '}
+        Your current Reservation:{' '}
+        {new Date(updatedReserv.date_time).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+        })}
+      </p>
       <label htmlFor='reservation-date-time'>Choose Date & Time:</label>
       <input
-        required
+        // required
         type='datetime-local'
         value={updatedReserv.date_time}
         name='date_time'
