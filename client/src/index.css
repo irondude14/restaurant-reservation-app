@@ -61,6 +61,13 @@ ul {
   margin: 0 auto;
 }
 
+.form h4 {
+  margin: 2px;
+}
+.form p {
+  margin: 2px;
+}
+
 a {
   text-decoration: none;
   color: black;
