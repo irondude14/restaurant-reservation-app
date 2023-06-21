@@ -301,6 +301,8 @@ a.signup {
 
 .error-list {
   color: red;
+  margin: auto;
+  margin-right: 4rem;
 }
 
 .reservation-names-list {
