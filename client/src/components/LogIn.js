@@ -45,7 +45,7 @@ const LogIn = () => {
   return (
     <form className='form'>
       <h3>Log In:</h3>
-      {error ? <p>{error}</p> : null}
+      {error ? <p className='error-list'>{error}</p> : null}
       <label htmlFor='email'>Email:</label>
       <input
         type='text'

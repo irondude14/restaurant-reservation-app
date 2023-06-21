@@ -81,7 +81,7 @@ const SignUp = () => {
         </label>
         <input type='submit' value='Register' id='submitBtn' />
       </form>
-      {errorsList ? <ul>{errorsList}</ul> : null}
+      {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
     </div>
   );
 };

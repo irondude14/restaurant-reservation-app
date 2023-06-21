@@ -298,3 +298,16 @@ a.signup {
 .users-page-restaurant-card p {
   margin: 0;
 }
+
+.error-list {
+  color: red;
+}
+
+.reservation-names-list {
+  text-align: left;
+}
+
+.reservation-names-list h4 {
+  margin: 0rem;
+  margin-left: 2.4rem;
+}

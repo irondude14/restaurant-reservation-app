@@ -28,7 +28,7 @@ const RestaurantList = () => {
           </p>
         </Link>
         {uniqueUserNames.length > 0 ? (
-          <div>
+          <div className='reservation-names-list'>
             <h4>Current reservations: </h4>
             <ul>
               {uniqueUserNames.map((user) => (
