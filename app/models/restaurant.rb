@@ -4,8 +4,8 @@ class Restaurant < ApplicationRecord
   validates :phone,
             presence: true,
             format: {
-              with: /\A\+?\d+\z/,
-              message: 'only allows numbers',
+              with: /\A\+?\d{10,11}\z/,
+              message: 'is invalid',
             }
   validates :price,
             presence: true,

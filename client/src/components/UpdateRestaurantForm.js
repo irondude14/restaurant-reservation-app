@@ -7,6 +7,7 @@ function UpdateRestaurantForm() {
   const { user, setUser } = useContext(LoginContext);
 
   const navigate = useNavigate();
+  const [errorsList, setErrorsList] = useState(null);
   const [updatedRestaurant, setUpdatedRestaurant] = useState({
     name: '',
     address: '',
@@ -15,6 +16,8 @@ function UpdateRestaurantForm() {
     price: '',
     image_url: '',
   });
+
+  console.log(errorsList);
 
   useEffect(() => {
     fetch(`/restaurants/${id}`)
@@ -40,13 +43,21 @@ function UpdateRestaurantForm() {
     })
       .then((r) => r.json())
       .then((data) => {
-        setUser({
-          ...user,
-          owned_restaurants: user.owned_restaurants.map((r) =>
-            r.id === updatedRestaurant.id ? updatedRestaurant : r
-          ),
-        });
-        navigate('/userspage');
+        console.log(data);
+        if (!data.errors) {
+          setUser({
+            ...user,
+            owned_restaurants: user.owned_restaurants.map((r) =>
+              r.id === updatedRestaurant.id ? updatedRestaurant : r
+            ),
+          });
+          navigate('/userspage');
+        } else {
+          const currentErrors = data.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
+        }
       });
   }
 
@@ -55,74 +66,77 @@ function UpdateRestaurantForm() {
   }
 
   return (
-    <form onSubmit={updateRestaurant} className='form'>
-      <h3>Update Restaurant</h3>
-      <label htmlFor='name'>Name:</label>
-      <input
-        required
-        type='text'
-        value={updatedRestaurant.name}
-        name='name'
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor='address'>Address:</label>
-      <input
-        required
-        type='text'
-        value={updatedRestaurant.address}
-        name='address'
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor='description'>
-        Description:
+    <div>
+      <form onSubmit={updateRestaurant} className='form'>
+        <h3>Update Restaurant</h3>
+        <label htmlFor='name'>Name:</label>
         <input
           required
           type='text'
-          name='description'
-          value={updatedRestaurant.description}
+          value={updatedRestaurant.name}
+          name='name'
           onChange={handleChange}
         />
-      </label>
-      <br />
-      <label htmlFor='phone'>
-        Phone #:
+        <br />
+        <label htmlFor='address'>Address:</label>
         <input
           required
           type='text'
-          name='phone'
-          value={updatedRestaurant.phone}
+          value={updatedRestaurant.address}
+          name='address'
           onChange={handleChange}
         />
-      </label>
-      <br />
-      <label htmlFor='price'>
-        Price (1 to 5):
-        <input
-          required
-          type='text'
-          name='price'
-          min='1'
-          max='5'
-          value={updatedRestaurant.price}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label htmlFor='image'>
-        Photo:
-        <input
-          required
-          type='text'
-          name='image_url'
-          value={updatedRestaurant.image_url}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <input type='submit' value='Update' id='submitBtn' />
-    </form>
+        <br />
+        <label htmlFor='description'>
+          Description:
+          <input
+            required
+            type='text'
+            name='description'
+            value={updatedRestaurant.description}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor='phone'>
+          Phone #:
+          <input
+            required
+            type='text'
+            name='phone'
+            value={updatedRestaurant.phone}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor='price'>
+          Price (1 to 5):
+          <input
+            required
+            type='text'
+            name='price'
+            min='1'
+            max='5'
+            value={updatedRestaurant.price}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <label htmlFor='image'>
+          Photo:
+          <input
+            required
+            type='text'
+            name='image_url'
+            value={updatedRestaurant.image_url}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <input type='submit' value='Update' id='submitBtn' />
+        {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
+      </form>
+    </div>
   );
 }
 

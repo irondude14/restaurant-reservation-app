@@ -6,6 +6,7 @@ function RestaurantForm() {
   const { user, setUser } = useContext(LoginContext);
   const navigate = useNavigate();
 
+  const [errorsList, setErrorsList] = useState(null);
   const [restaurant, setRestaurant] = useState({
     name: '',
     address: '',
@@ -34,11 +35,18 @@ function RestaurantForm() {
     })
       .then((r) => r.json())
       .then((newRest) => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          owned_restaurants: [...prevUser.owned_restaurants, newRest],
-        }));
-        navigate('/userspage');
+        if (!newRest.errors) {
+          setUser((prevUser) => ({
+            ...prevUser,
+            owned_restaurants: [...prevUser.owned_restaurants, newRest],
+          }));
+          navigate('/userspage');
+        } else {
+          const currentErrors = newRest.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
+        }
       });
   }
 
@@ -111,6 +119,7 @@ function RestaurantForm() {
         </label>
         <br />
         <input type='submit' value='Add' id='submitBtn' />
+        {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
       </form>
     );
   } else {

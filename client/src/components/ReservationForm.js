@@ -7,6 +7,7 @@ const ReservationForm = () => {
   const { user, setUser } = useContext(LoginContext);
   const navigate = useNavigate();
 
+  const [errorsList, setErrorsList] = useState(null);
   const [reservation, setReservation] = useState({
     restaurant_id: id,
     name: '',
@@ -33,11 +34,18 @@ const ReservationForm = () => {
     })
       .then((r) => r.json())
       .then((newReserv) => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          reservations: [...prevUser.reservations, newReserv],
-        }));
-        navigate('/userspage');
+        if (!newReserv.errors) {
+          setUser((prevUser) => ({
+            ...prevUser,
+            reservations: [...prevUser.reservations, newReserv],
+          }));
+          navigate('/userspage');
+        } else {
+          const currentErrors = newReserv.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
+        }
       });
   }
 
@@ -77,12 +85,13 @@ const ReservationForm = () => {
         </label>
         <br />
         <input type='submit' value='Reserve' id='submitBtn' />
+        {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
       </form>
     );
   } else if (!user) {
     return (
       <div>
-        <p>Please LogIn</p>
+        <h3>Please LogIn</h3>
       </div>
     );
   } else {

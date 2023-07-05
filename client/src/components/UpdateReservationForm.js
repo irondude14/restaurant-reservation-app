@@ -7,6 +7,7 @@ function UpdateReservationForm() {
   const { user, setUser } = useContext(LoginContext);
 
   const navigate = useNavigate();
+  const [errorsList, setErrorsList] = useState(null);
   const [updatedReserv, setUpdatedReservation] = useState({
     name: '',
     date_time: '',
@@ -37,13 +38,20 @@ function UpdateReservationForm() {
     })
       .then((r) => r.json())
       .then((data) => {
-        setUser({
-          ...user,
-          reservations: user.reservations.map((r) =>
-            r.id === updatedReserv.id ? updatedReserv : r
-          ),
-        });
-        navigate('/userspage');
+        if (!data.errors) {
+          setUser({
+            ...user,
+            reservations: user.reservations.map((r) =>
+              r.id === updatedReserv.id ? updatedReserv : r
+            ),
+          });
+          navigate('/userspage');
+        } else {
+          const currentErrors = data.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
+        }
       });
   }
 
@@ -94,6 +102,7 @@ function UpdateReservationForm() {
       </label>
       <br />
       <input type='submit' value='Update' id='submitBtn' />
+      {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
     </form>
   );
 }

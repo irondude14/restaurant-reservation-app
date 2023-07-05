@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function UpdateUserInfo() {
   const { user, setUser } = useContext(LoginContext);
+  const [errorsList, setErrorsList] = useState(null);
   const [updateInfo, setUpdateInfo] = useState({});
   const navigate = useNavigate();
 
@@ -18,11 +19,19 @@ function UpdateUserInfo() {
     })
       .then((r) => r.json())
       .then((updatedUserInfo) => {
-        setUser({
-          ...user,
-          ...updatedUserInfo,
-        });
-        navigate('/userspage');
+        if (!updatedUserInfo.errors) {
+          setUser({
+            ...user,
+            ...updatedUserInfo,
+          });
+          navigate('/userspage');
+        } else {
+          setUpdateInfo({});
+          const currentErrors = updatedUserInfo.errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ));
+          setErrorsList(currentErrors);
+        }
       });
   }
 
@@ -62,18 +71,8 @@ function UpdateUserInfo() {
         onChange={handleUserInfo}
       />
       <br />
-      {/* <label htmlFor='password_confirmation'>
-        Please confirm your password:
-        <input
-          type='password'
-          name='password'
-          value={updateInfo.password || ''}
-          required
-          onChange={handleUserInfo}
-        />
-      </label>
-      <br /> */}
       <input type='submit' value='Update' id='submitBtn' />
+      {errorsList ? <ul className='error-list'>{errorsList}</ul> : null}
     </form>
   );
 }
