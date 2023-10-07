@@ -52,7 +52,7 @@ const ReservationForm = () => {
   if (user && user.reservations) {
     return (
       <form onSubmit={handleSubmit} className='form'>
-        <h3>ReservationForm</h3>
+        <h3>Reservation Form</h3>
         <label htmlFor='name'>Name:</label>
         <input
           required

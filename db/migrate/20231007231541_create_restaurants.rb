@@ -6,8 +6,7 @@ class CreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :phone
       t.integer :price
       t.string :image_url
-      t.integer :owner_id
-
+      t.text :description
       t.timestamps
     end
   end

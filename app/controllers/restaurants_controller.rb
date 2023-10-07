@@ -70,4 +70,5 @@ class RestaurantsController < ApplicationController
       :description
     )
   end
+
 end

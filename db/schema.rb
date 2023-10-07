@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_24_233014) do
+ActiveRecord::Schema.define(version: 2023_10_07_231608) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "ownerships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_ownerships_on_restaurant_id"
@@ -22,13 +25,15 @@ ActiveRecord::Schema.define(version: 2023_05_24_233014) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "restaurant_id"
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
     t.integer "guest_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.datetime "date_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -37,9 +42,9 @@ ActiveRecord::Schema.define(version: 2023_05_24_233014) do
     t.string "phone"
     t.integer "price"
     t.string "image_url"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +58,6 @@ ActiveRecord::Schema.define(version: 2023_05_24_233014) do
 
   add_foreign_key "ownerships", "restaurants"
   add_foreign_key "ownerships", "users"
+  add_foreign_key "reservations", "restaurants"
+  add_foreign_key "reservations", "users"
 end

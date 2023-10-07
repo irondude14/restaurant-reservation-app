@@ -8,32 +8,43 @@
 
 puts 'Seeding database...'
 
-# Owner.create(name: 'Arthur Bucco', email: 'abucco@gmail.com', password: '123')
+# Users
+kevin =
+  User.create(name: 'Kevin Smith', email: 'ksmith@gmail.com', password: '123')
 
-# User.create(
-#   name: 'Kevin Smith',
-#   email: 'ksmith@gmail.com',
-#   phone: '+17184136666',
-#   password: '123',
-# )
+arthur =
+  User.create(name: 'Arthur Bucco', email: 'abucco@gmail.com', password: '123')
 
-# Restaurant.create(
-#   name: 'Vesuvio',
-#   address: '2 1st St, Elizabeth, NJ 07206',
-#   phone: '+19084335050',
-#   price: 3,
-#   image_url:
-#     'https://pbs.twimg.com/media/FAjXILrWQAQV_zU?format=jpg&name=medium',
-#   owner_id: 1,
-#   description: 'Classic Italian Restaurant',
-# )
+# Restaurants
+vesuvio =
+  Restaurant.create(
+    name: 'Vesuvio',
+    address: '2 1st St, Elizabeth, NJ 07206',
+    phone: '+19084335050',
+    price: 3,
+    image_url:
+      'https://pbs.twimg.com/media/FAjXILrWQAQV_zU?format=jpg&name=medium',
+    description: 'Classic Italian Restaurant',
+  )
 
-# Reservation.create(
-#   user_id: 1,
-#   restaurant_id: 1,
-#   name: 'Kevin Smith',
-#   date_time: '2023-05-25 18:30',
-#   guest_number: 4,
-# )
+# Ownerships
+Ownership.create(user: arthur, restaurant: vesuvio)
+
+# Reservations
+Reservation.create(
+  user: kevin,
+  restaurant: vesuvio,
+  name: 'Kevin Smith',
+  date_time: '2023-05-25 18:30',
+  guest_number: 4,
+)
+
+Reservation.create(
+  user: kevin,
+  restaurant: vesuvio,
+  name: 'Kevin Smith',
+  date_time: '2023-05-25 18:30',
+  guest_number: 4,
+)
 
 puts 'Done seeding.'
