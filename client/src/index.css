@@ -32,6 +32,10 @@ ul {
   align-items: center;
 }
 
+.navbar h3 {
+  color: #ccc;
+}
+
 .form {
   max-width: 15rem;
   margin: 4rem auto;
@@ -161,25 +165,6 @@ a.signup {
   padding: 10px;
 }
 
-.home-page-container::before,
-.home-page-container::after {
-  content: '';
-  position: absolute;
-  top: 10px;
-  height: 2px;
-  width: 50%;
-  background-color: #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.home-page-container::before {
-  left: 0;
-}
-
-.home-page-container::after {
-  right: 0;
-}
-
 .restaurant-card {
   flex: 1 0;
   max-width: 30rem;
@@ -219,10 +204,6 @@ a.signup {
   box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.users-page-navbar {
-  justify-content: center;
-}
-
 .users-page-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -237,23 +218,8 @@ a.signup {
   justify-content: center;
 }
 
-.users-page-container::before,
-.users-page-container::after {
-  content: '';
-  position: absolute;
-  top: 10px;
-  height: 2px;
-  width: 50%;
-  background-color: #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.users-page-container::before {
-  left: 0;
-}
-
-.users-page-container::after {
-  right: 0;
+.users-page-container h2 {
+  color: white;
 }
 
 .users-page-reservation-card {

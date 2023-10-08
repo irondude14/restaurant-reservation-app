@@ -16,6 +16,13 @@ const Navigation = () => {
     });
   }
 
+  function deleteAcc(id) {
+    fetch(`/users/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }).then(logout());
+  }
+
   if (user) {
     return (
       <div className='navbar'>
@@ -26,6 +33,15 @@ const Navigation = () => {
           </button>
           <button id='navbarBtn'>
             <Link to='/userspage'>{user.name}</Link>
+          </button>
+          <button id='navbarBtn'>
+            <Link to={`/newrestaurant`}>Add a Restaurant</Link>
+          </button>
+          <button id='navbarBtn'>
+            <Link to={`/updateuser`}>Update Your Info</Link>
+          </button>
+          <button onClick={() => deleteAcc(user.id)} id='navbarBtn'>
+            Delete Account
           </button>
           <button id='navbarBtn' onClick={logoutUser}>
             Log Out
