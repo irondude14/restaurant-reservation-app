@@ -14,7 +14,6 @@ const Home = () => {
   } else {
     return (
       <div>
-        <h3>Please Log In or Sign Up</h3>
         <RestaurantList />
       </div>
     );

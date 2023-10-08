@@ -44,6 +44,7 @@ const Navigation = () => {
           <button id='navbarBtn'>
             <Link to='/login'>Log In </Link>
           </button>
+          <h3>Please Log In or Sign Up</h3>
         </nav>
         <Outlet />
       </div>

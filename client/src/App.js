@@ -17,26 +17,25 @@ function App() {
   return (
     <div>
       <LoginProvider>
+        <Navigation />
         <Routes>
-          <Route path='/' element={<Navigation />}>
-            <Route path='/' element={<Navigate to='/home' />} />
-            <Route path='home' element={<Home />} />
-            <Route path='login' element={<LogIn />} />
-            <Route path='signup' element={<SignUp />} />
-            <Route path='userspage' element={<UsersPage />} />
-            <Route path='reservation/:id' element={<ReservationForm />} />
-            <Route
-              path='updatereservation/:id'
-              element={<UpdateReservationForm />}
-            />
-            <Route path='newrestaurant' element={<RestaurantForm />} />
-            <Route
-              path='updaterestaurant/:id'
-              element={<UpdateRestaurantForm />}
-            />
-            <Route path='updateuser' element={<UpdateUserInfo />} />
-            <Route path='restaurant/:id' element={<Restaurant />} />
-          </Route>
+          <Route path='/' element={<Navigate to='/home' />} />
+          <Route path='home' element={<Home />} />
+          <Route path='login' element={<LogIn />} />
+          <Route path='signup' element={<SignUp />} />
+          <Route path='userspage' element={<UsersPage />} />
+          <Route path='reservation/:id' element={<ReservationForm />} />
+          <Route
+            path='updatereservation/:id'
+            element={<UpdateReservationForm />}
+          />
+          <Route path='newrestaurant' element={<RestaurantForm />} />
+          <Route
+            path='updaterestaurant/:id'
+            element={<UpdateRestaurantForm />}
+          />
+          <Route path='updateuser' element={<UpdateUserInfo />} />
+          <Route path='restaurant/:id' element={<Restaurant />} />
         </Routes>
       </LoginProvider>
     </div>
